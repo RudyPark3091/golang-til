@@ -6,6 +6,12 @@ import (
 	"net/http"
 )
 
+type SongData struct {
+	rank   string
+	artist string
+	song   string
+}
+
 // Selects every target nodes from selector node in document d
 func Select(d *goquery.Document, selector string, target string) []string {
 	infos := []string{}
@@ -43,7 +49,12 @@ func main() {
 	artists := Select(doc, containerSelector, artistSelector)
 	ranks := Select(doc, containerSelector, rankSelector)
 
+	data := []*SongData{}
 	for i := 0; i < len(songs); i++ {
-		fmt.Printf("%s: %s - %s\n", ranks[i], artists[i], songs[i])
+		data = append(data, &SongData{ranks[i], artists[i], songs[i]})
+	}
+
+	for _, v := range data {
+		fmt.Printf("%s: %s - %s\n", v.rank, v.artist, v.song)
 	}
 }
