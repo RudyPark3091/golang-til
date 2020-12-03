@@ -1,5 +1,6 @@
 *.exe
 *.out
+*.mp3
 
 **/build/*
 **/image/*
