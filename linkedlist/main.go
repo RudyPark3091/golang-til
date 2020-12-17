@@ -7,9 +7,8 @@ type Node struct {
 	link  *Node
 }
 
-func (n *Node) append(node *Node) *Node {
+func (n *Node) Append(node *Node) *Node {
 	n.link = node
-	return n
 }
 
 func main() {
